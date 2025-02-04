@@ -1,0 +1,45 @@
+Subject: Data quality findings and clarification requests
+
+Good morning (Stakeholder name),
+Hope all is well. I have conducted a detailed review of the data with the help of few scripts and 
+observing the entries. In this review, I found several quality issues that may impact analysis results. 
+Here is a summary of my findings.
+
+Data Quality Issues -
+1) Incosistent structring and missing attributes
+    a) attributes were missing across various records in the receipt items field
+    b) the structuring of these items was also very inconsistent
+2) Duplicate entries in the users data
+    a) over half the entries were duplicates which had to be removed
+3) Non-unique barcodes in brands table
+    a) barcodes were expected to be unique but duplicate entries were found
+4) Non existing brands in receipts
+    a) firstly 2 out of 3 entries in receipts were missing either brandcode or barcode
+    b) there were also non identified instances of barcodes which were not present in the brands data
+5) Ambiguous receipt status
+    a) none of the receipts had a status of 'Accepted'
+    b) I have proceeded with 'Finished' as its closest alternative and need your judgement on this
+
+Requests for clarification -
+1) Could you provide me with a data description dictionary for internal fields of receipt items
+    and cpg collection.
+2) Should barcodes be strictly unique or duplicates are to be expected?
+3) Which receipt status should be used as a substitution for the 'Accepted' status?
+
+Scaling and Production improvements -
+1) If we end up storing the receipts data as it currently is, we could get issues down the line 
+where we would exceed the size limit and the data may get corrupted.
+2) To avoid the size limit issues, we could store it using the blob storage option which would
+sacrifice performance for correct storage.
+3) The best solution would be to break down the receipts data further into receipt item list and other 
+receipt data which will make the data storing a bit more complex but is much better in performance 
+and scaling.
+4) Moving the data to cloud would be the best step to improve scaling and also integrating the cloud
+benefits.
+
+Resolving these issues and getting the requested clarifications, in particular the data dictionaries,
+would help me build a more optimized and cleaner business model which will lead to faster results.
+Please let me know a convenient time to schedule a discussion to address these points.
+
+Thank you,
+Bhargav Sandeep Mishal

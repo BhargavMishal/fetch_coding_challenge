@@ -2,7 +2,7 @@ import pandas as pd
 import json
 
 # loading JSON file into a dataFrame
-with open("data/brands.json", "r") as f:
+with open("data/raw/brands.json", "r") as f:
     brands = [json.loads(line) for line in f]
 
 # extract values from nested dictionaries
@@ -36,6 +36,10 @@ df_brands.drop("cpg", axis=1, inplace=True) # dropping the original CPG col
 
 # droping duplicate rows
 df_brands = df_brands.drop_duplicates()
+
+# barcodes with duplicate entries in brands table
+duplicate_barcodes = df_brands[df_brands.duplicated(subset=["barcode"], keep=False)]
+print(duplicate_barcodes.sort_values(by="barcode")) # sorting by barcode to see duplicate entries together
 
 # saveing the data to CSV
 df_brands.to_csv("brands.csv", index=False)

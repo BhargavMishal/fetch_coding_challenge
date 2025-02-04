@@ -4,7 +4,7 @@ from datetime import datetime
 
 # loading json file into a dataFrame and getting all fields present in rewardsReceiptItemList
 fields = set()
-with open("data/receipts.json", "r") as f:
+with open("data/raw/receipts.json", "r") as f:
     receipts = [json.loads(line) for line in f]
 
 for receipt in receipts:

@@ -3,7 +3,7 @@ import json
 from datetime import datetime
 
 # opening the file and loading all lines
-with open("data/users.json","r") as user_file:
+with open("data/raw/users.json","r") as user_file:
     users = [json.loads(line) for line in user_file] # list of rows (each item is a dictionary for each line in users.json)
 
 # making pandas dataframe object
